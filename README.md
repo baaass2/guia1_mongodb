@@ -12,7 +12,7 @@ Instalar mongodb: https://www.mongodb.com/docs/manual/tutorial/install-mongodb-o
 python3 connect_db
 
 
-*Uso: *
+*Uso:*
 Este programa permite conectarse a la red local mongodb con el puerto por defecto: mongodb://localhost:27017, si no se logra hacer la conexión
 tiene que cambiar la variable url que esta en linea 123 del archivo connect_db por los parametros de su conexión.
 
@@ -23,6 +23,6 @@ La primera experiencia del usuario es un menú de 3 opciones:
 
 
 
-*Esquema de la db: *
+*Esquema de la db:*
 
 {'name_duenio': 'example_name', 'name_dogs': ['dog1','dog2']}
