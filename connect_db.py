@@ -8,7 +8,6 @@ class conectar_db():
         try:
             # set a 5-second connection timeout
             self.client = pymongo.MongoClient(conn_str, serverSelectionTimeoutMS=5000)
-
         except Exception:
             print("Unable to connect to the server.")
         
@@ -44,6 +43,9 @@ class conectar_db():
         db = self.client[name_db]
         coll = db[name_coll]
         
+        mydict = {'name_duenio':'example1', 'name_dogs': ['example1'] }
+
+        coll.insert_one(mydict)
         return 0
     
     def insert(self, collection, database):
@@ -118,15 +120,14 @@ def crud(database, collection, db):
             db.update(collection, database, data)
         else:end="1"
 
-print("Ingrese URL de conexión: ")
 url = "mongodb://localhost:27017"
 db = conectar_db(url)
-
 end = 0
 while (end != 1):
     print("-------------------MENU-----------------------")
-    print("1. Crear base de dato y colección")
-    print("2. Seleccionar base de dato")
+    print("1. Crear base de dato y colección.")
+    print("2. Seleccionar base de dato.")
+    print("3. Cerrar el programa.")
     print("----------------------------------------------")
     opc = input()
 
@@ -136,7 +137,7 @@ while (end != 1):
 
     elif(opc == "2"):
         dbs = db.select_db()
-    
+
         print("Seleccionar base da dato:")
         for i in range(0, len(dbs)):
             print(str(i)+". " +dbs[i])
@@ -155,7 +156,7 @@ while (end != 1):
         collection = colls[int(opc2)]
 
         crud(database, collection, db)
-    
+
     elif(opc != "1" or opc != "2"):
         print("Se cierra el programa...")
         end = 1
